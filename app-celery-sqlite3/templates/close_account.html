@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block body %}
+	<h2>Close Account</h2>
+	{% if error %}
+		<p class=error><strong>Error:</strong> {{ error }} 
+	{% endif %}
+	<form action="{{ url_for('close_account') }}" method="post">
+		<dl>
+			<dt>Username:
+			<dd><input type="text" name="username" />
+			<dt>Password:
+			<dd><input type="password" name="passwd" />
+			<dd><input type="submit" value="Close" />
+			    <input type="submit" name="cancel" value="Cancel" />
+		</dl>
+	</form>
+{% endblock %}
+{% block flash %}
+	{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			<div class=flash>
+				Results:
+				<pre>
+				{% for message in messages %}
+					{{ message }}
+				{% endfor %}
+				</pre>
+			</div>
+		{% endif %}
+	{% endwith %}
+{% endblock %}

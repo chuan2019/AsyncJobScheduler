@@ -1,0 +1,32 @@
+{% extends 'layout.html'%}
+{% block body %}
+	<br><br>
+	<center>
+		<h2>Schedule a Python Expression to be Executed:</h2>
+		<form action="{{url_for('task')}}" method="post">
+			<p>
+				Python Expression: <input type="text" name="expression" />
+			</p>
+			<p>
+				Execute it in: <input type="number" name="delay" min="0" max="60" /> Seconds
+			</p>
+			<p>
+				<input type="submit" value="Schedule" />
+			</p>
+		</form>
+	</center>
+{% endblock %}
+{% block flash %}
+	{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			<div class=flash>
+				Results:
+				<pre>
+				{% for message in messages %}
+					{{ message }}
+				{% endfor %}
+				</pre>
+			</div>
+		{% endif %}
+	{% endwith %}
+{% endblock %}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>app-celery-sqlite3</title>
+		<link rel=stylesheet type=text/css href="{{url_for('static', filename='style.css')}}">
+	</head>
+	<div class=page>
+			<center><h1>Celery Asynchronous Task Scheduler</h1></center>
+			<div class=nav>
+				<h2>Navigation:</h2><br />
+				<ul>
+					{% if not session.logged_in %}
+						<li><a href="{{ url_for('login') }}">log in</a></li>
+						<li><a href="{{ url_for('register') }}">register</a></li>
+					{% else %}
+						<li><a href="{{ url_for('logout') }}">log out</a></li>
+						<li><a href="{{ url_for('remote') }}">remote control</a></li>
+						<li><a href="{{ url_for('task')}}">schedule task</a></li>
+						<li><a href="{{ url_for('close_account')}}">close account</a></li>
+					{% endif %}
+				</ul>
+			</div>
+			<div class=content>
+				{% block body %}
+				{% endblock %}
+			</div>
+			<div class=flash>
+				{% block flash %}
+				{% endblock %}
+			</div>
+	</div>
+</html>

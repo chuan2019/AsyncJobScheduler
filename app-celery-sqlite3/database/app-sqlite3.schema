@@ -1,0 +1,7 @@
+DROP TABLE IF EXISTS account;
+CREATE TABLE account (
+	username VARCHAR(10) NOT NULL UNIQUE,
+	password VARCHAR(4) NOT NULL,
+	address  TEXT NOT NULL,
+	PRIMARY KEY (username)
+);

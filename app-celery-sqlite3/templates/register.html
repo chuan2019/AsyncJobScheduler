@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block body %}
+	<h2>Register:<br /></h2>
+	<form action="{{ url_for('register') }}" method="post">
+		<dl>
+			<dt>Username:
+			<dd><input type='text' name='username' />
+			<dt>Password:
+			<dd><input type='password' name='passwd' />
+			<dd><input type='submit' value='Register' />
+		</dl>
+	</form>
+{% endblock %}
+{% block flash %}
+	{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			<div class=flash>
+				Results:
+				<pre>
+				{% for message in messages %}
+					{{ message }}
+				{% endfor %}
+				</pre>
+			</div>
+		{% endif %}
+	{% endwith %}
+{% endblock %}

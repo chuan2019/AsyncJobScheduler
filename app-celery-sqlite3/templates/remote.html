@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+{% block body %}
+	<center>
+		<br><br>
+		<h2>Python Expression to be Executed:</h2>
+		<br><br>
+		{% if error %}
+			<p class=error><strong>Error:</strong> {{ error }} 
+		{% endif %}
+		<form action="{{ url_for('remote') }}" method="post">
+				<p><input type='text' name='expression' />
+				<input type='submit' value='Execute' /></p>
+		</form>
+	</center>
+{% endblock %}
+{% block flash %}
+	{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			<div class=flash>
+				Results:
+				<pre>
+				{% for message in messages %}
+					{{ message }}
+				{% endfor %}
+				</pre>
+			</div>
+		{% endif %}
+	{% endwith %}
+{% endblock %}

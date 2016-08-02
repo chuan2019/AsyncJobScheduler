@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block body %}
+	<center>
+		<h2>Welcome, My Friend!</h2>
+		<br>
+		{% if not session.logged_in %}
+			<p><img src="{{url_for('static', filename='./images/images-00.png')}}" style="width:250px;height:250px"></img></p>
+		{% endif %}
+	</center>
+{% endblock %}
+{% block flash %}
+	{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			<div class=flash>
+				Results:
+				<pre>
+				{% for message in messages %}
+					{{ message }}
+				{% endfor %}
+				</pre>
+			</div>
+		{% endif %}
+	{% endwith %}
+{% endblock %}
